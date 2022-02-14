@@ -14,6 +14,7 @@ public class EmployeeWageComputation {
 		int empHrsf = 8;
 		int empHrsP = 4;
 		int workingDay = 20;
+
 		// Use Switch case condition for calculating employee salary of part time and
 		// full time for a month.
 		switch (randomNum) {
@@ -24,15 +25,21 @@ public class EmployeeWageComputation {
 			break;
 		case 1:
 			System.out.println(" Employee is Present full time ");
-			int salary1 = wagePerHour * empHrsf * workingDay; // Employee full Salary/Month
-			System.out.println("Employee salary of Full time of Full Month is :" + salary1);
+			int workingHrs = 1;
+			while (workingHrs <= 100) { // Calculate salary for 100 hrs using loop
+				int totalSalary = workingHrs * wagePerHour;
+				System.out.println("workinHrs" + workingHrs);
+				System.out.println(" Salary is : " + totalSalary);
+				workingHrs++;
+			}
+
 			break;
 		case 2:
 			System.out.println(" Employee is Present part time ");
 			int salary11 = wagePerHour * empHrsP * workingDay; // Employee Part time Salary/Month
 			System.out.println("Employee salary of part time of full month is :" + salary11);
 			break;
-		}
 
+		}
 	}
 }
