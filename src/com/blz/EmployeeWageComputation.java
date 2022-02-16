@@ -3,43 +3,44 @@ package com.blz;
 public class EmployeeWageComputation {
 
 	public static void main(String[] args) {
-		System.out.println(" Welcome in Employee Wage Computation....!!");
-
-		int randomNum = (int) (Math.random() * 3); // create random number using math function
-
-		// Initialize and declare variables
-
 		int wagePerHour = 20;
-		int empHrs = 0;
-		int empHrsf = 8;
-		int empHrsP = 4;
-		int workingDay = 20;
+		int fullDayHour = 8;
+		int partTimeHour = 4;
+		int workingDaysInMonth = 20;
+		int wagePerDay;
+		int totalWage = 0;
+		int totalWorkingHour = 0;
+		int totalWorkingDay = 0;
 
-		// Use Switch case condition for calculating employee salary of part time and
-		// full time for a month.
-		switch (randomNum) {
-		case 0:
-			System.out.println(" Employee is Absent ");
-			int salary = wagePerHour * empHrs; // Employee No Salary/Day
-			System.out.println("Employee salary is :" + salary);
-			break;
-		case 1:
-			System.out.println(" Employee is Present full time ");
-			int workingHrs = 1;
-			while (workingHrs <= 100) { // Calculate salary for 100 hrs using loop
-				int totalSalary = workingHrs * wagePerHour;
-				System.out.println("workinHrs" + workingHrs);
-				System.out.println(" Salary is : " + totalSalary);
-				workingHrs++;
-			}
+		for (int i = 1; i <= workingDaysInMonth; i++) {
+			if (totalWorkingHour <= 100 && totalWorkingDay <= 20) {
+				int empCheck = (int) Math.floor((Math.random() * 10) % 3);
 
-			break;
-		case 2:
-			System.out.println(" Employee is Present part time ");
-			int salary11 = wagePerHour * empHrsP * workingDay; // Employee Part time Salary/Month
-			System.out.println("Employee salary of part time of full month is :" + salary11);
-			break;
+				if (empCheck == 2) {
+					wagePerDay = (wagePerHour * fullDayHour);
+					totalWage = totalWage + wagePerDay;
+					totalWorkingHour = totalWorkingHour + fullDayHour;
+					totalWorkingDay++;
+				}
 
+				else if (empCheck == 1) {
+
+					wagePerDay = (wagePerHour * partTimeHour);
+					totalWage = totalWage + wagePerDay;
+					totalWorkingHour = totalWorkingHour + partTimeHour;
+					totalWorkingDay++;
+				} else {
+					wagePerDay = 0;
+					totalWage = totalWage + wagePerDay;
+				}
+
+			} else
+				break;
 		}
+
+		System.out.println("Total working hour = " + totalWorkingHour);
+		System.out.println("Toatl working day = " + totalWorkingDay);
+		System.out.println("Total wage of the month = " + totalWage);
 	}
+
 }
